@@ -14,7 +14,7 @@ public class electroShock extends Ataque {
     public int ElectroShockTurns() {
         Random random = new Random();
         int ShockTurns = random.nextInt(3);
-        //dmg = dmg /2;
+        //dmg = dmg /2; &
         ShockTurns--;
         return ShockTurns;
     }
