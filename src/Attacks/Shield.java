@@ -14,9 +14,11 @@ public class Shield extends Ataque {
         dmg= 0;
     }
 
-    public boolean shieldOnDmg() {
-        if (shieldOn) {
-
-        }
+    public int shieldTurns() {
+        Random random = new Random();
+        int shieldTurns = random.nextInt(3);
+        //dmg = dmg /2;
+        shieldTurns--;
+        return shieldTurns;
     }
 }

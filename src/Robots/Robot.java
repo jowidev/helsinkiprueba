@@ -9,7 +9,7 @@ public abstract class Robot {
         public boolean isStunned = false;
 
         public void atacar() {
-                Atadmg-=
+
         }
 
 }
