@@ -1,12 +1,22 @@
+import Utils.Utils;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("ingrese su nombre");
-        scanner.nextInt();
-        System.out.println("Bienvenido "+scanner);
-
+        System.out.println("Bienvenido ");
+        mostrarMenuOpciones();
 
     }
+
+
+
+    private static void mostrarMenuOpciones() {
+        System.out.println("1.- Ver estadisticas"
+                            +"2.- Atacar"
+                            +"3.- Salir");
+
+    }
+
 }

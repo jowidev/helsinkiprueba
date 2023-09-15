@@ -6,6 +6,6 @@ public class Acid extends Ataque {
         energy = 100;
         dmg = 75;
         acc = 80;
-
+        //corrosion
     }
 }

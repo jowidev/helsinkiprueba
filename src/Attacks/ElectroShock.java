@@ -2,8 +2,8 @@ package Attacks;
 
 import java.util.Random;
 
-public class electroShock extends Ataque {
-    public electroShock() {
+public class ElectroShock extends Ataque {
+    public ElectroShock() {
         nombre = "Interferencia Electromagnetica";
         energy = 75;
         dmg = 0;

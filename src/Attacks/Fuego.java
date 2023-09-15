@@ -6,6 +6,6 @@ public class Fuego extends Ataque {
         energy = 150;
         dmg = 100;
         acc = 65;
-
+        //fuego
     }
 }

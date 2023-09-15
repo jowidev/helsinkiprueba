@@ -1,9 +1,6 @@
 package Robots;
 
-import Attacks.Acid;
-import Attacks.Ataque;
-import Attacks.Fuego;
-import Attacks.Metralleta;
+import Attacks.*;
 
 public class StarPlatinum extends Robot {
     public StarPlatinum() {
@@ -13,6 +10,6 @@ public class StarPlatinum extends Robot {
         Movs[0] = new Metralleta();
         Movs[1] = new Acid();
         Movs[2] = new Fuego();
-
+        Movs[3] = new Shield();
     }
 }
