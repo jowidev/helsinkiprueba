@@ -4,6 +4,7 @@ import Attacks.*;
 
 public class Titan extends Robot {
     public Titan() {
+        name = "EVA-01";
         hp = 1000;
         ep = 1500;
         Ataque[] Movs = new Ataque[4];
