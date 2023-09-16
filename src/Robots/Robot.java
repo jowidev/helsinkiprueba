@@ -19,8 +19,5 @@ public abstract class Robot {
                 return isAlive;
         }
         
-        public void atacar() {
-
-        }
 
 }
