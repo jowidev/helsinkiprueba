@@ -7,11 +7,11 @@ public class StarPlatinum extends Robot {
         name = "Star Platinum";
         hp = 1200;
         ep = 1000;
-        Ataque[] Movs = new Ataque[4];
-        Movs[0] = new Metralleta();
-        Movs[1] = new Acid();
-        Movs[2] = new Fuego();
-        Movs[3] = new Shield();
+        Ataque[] movs = new Ataque[4];
+        movs[0] = new Metralleta();
+        movs[1] = new Acid();
+        movs[2] = new Fuego();
+        movs[3] = new Shield();
         //Ataque[] Movs = {Metralleta, Acid, Fuego, Shield}
     }
 }

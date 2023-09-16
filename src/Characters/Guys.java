@@ -4,7 +4,7 @@ import Robots.Robot;
 
 public abstract class Guys {
     public String name;
-    public Robot[] Roblox;
+    public Robot[] robot;
 
 
     public Guys(String name) {

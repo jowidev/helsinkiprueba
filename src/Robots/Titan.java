@@ -7,10 +7,10 @@ public class Titan extends Robot {
         name = "EVA-01";
         hp = 1000;
         ep = 1500;
-        Ataque[] Movs = new Ataque[4];
-        Movs[0] = new Metralleta();
-        Movs[1] = new Acid();
-        Movs[2] = new Fuego();
-        Movs[3] = new ElectroShock();
+        Ataque[] movs = new Ataque[4];
+        movs[0] = new Metralleta();
+        movs[1] = new Acid();
+        movs[2] = new Fuego();
+        movs[3] = new ElectroShock();
     }
 }

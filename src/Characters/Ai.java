@@ -6,9 +6,7 @@ public class Ai extends Guys {
 
     public Ai() {
         super("Helsink-e");
-        Roblox = new Robot[1];
-
-
+        robot = new Robot[1];
     }
 
 }
