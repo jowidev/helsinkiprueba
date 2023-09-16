@@ -31,7 +31,7 @@ public class Main {
         System.out.println("robot del rival: " + ai.robot[0].name);
 
         while ((starPlatinum.isAlive()|| titan.isAlive())&&continueBattle){
-            mostrarMenuOpciones(user, continueBattle);
+            //mostrarMenuOpciones(user, continueBattle);
             AttackSelector(user);
 
 
@@ -44,23 +44,23 @@ public class Main {
     }
 
 
-    public static boolean mostrarMenuOpciones(User user, boolean continueBattle) {
+   /*public static boolean mostrarMenuOpciones(User user, boolean continueBattle) {
         System.out.println("1.- Atacar\n"
                             +"2.- Salir");
         int opc = Utils.sc.nextInt();
         switch (opc) {
-
             case 1:
                 AttackSelector(user);
-                break;
+                break; // Add a break to exit the switch
             case 2:
                 continueBattle = false;
-                break;
+                System.out.println("Salir del juego");
+                break; // Add a break to exit the switch
             default:
                 System.out.println("Opción no válida");
         }
         return continueBattle;
-    }
+    }*/
 
     public static void AttackSelector(User user) {
         System.out.println("Qué movimiento debe usar " + user.roboto[0].name + "?");
