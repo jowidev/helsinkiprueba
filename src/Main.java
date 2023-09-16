@@ -31,7 +31,7 @@ public class Main {
             ai.robot[0] = robotsDisponibles[0];
         }
 
-        System.out.println("Tu robot: " + user.robot[0].name);
+        System.out.println("Tu robot: " + user.roboto[0].name);
         System.out.println("robot del rival: " + ai.robot[0].name);
 
         while ((starPlatinum.isAlive()|| titan.isAlive())&&continueBattle){
@@ -56,9 +56,9 @@ public class Main {
     }*/
 
     public static void AttackSelector(User user) {
-        System.out.println("Qué movimiento debe usar " + user.robot[0].name + "?");
-        for (int i = 0; i < user.roboto[0].movs.length; i++) {
-            System.out.println("ataque " + (i + 1) + ": " + user.roboto[0].movs[i]);
+        System.out.println("Qué movimiento debe usar " + user.roboto[0].name + "?");
+        for (int i = 0; i < 4; i++) {
+            System.out.println("ataque " + (i + 1) + ": " + user.roboto[0].ataques[i].nombre);
         }
         Utils.sc.nextInt();
         /*
