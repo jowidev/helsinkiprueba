@@ -9,6 +9,7 @@ public class Shield extends Ataque {
     boolean shieldOn = false;
 
     public Shield() {
+        nombre = "Escudo protector";
         energy = 50;
         acc = 40;
         dmg= 0;

@@ -7,7 +7,7 @@ public abstract class Robot {
         public int hp; //vida
         public String name;
         public int ep; //energia
-        public Ataque[] ataques = new Ataque[4];
+        public Ataque[] ataque = new Ataque[4];
         public boolean isAlive = true;
         public boolean isStunned = false;
 

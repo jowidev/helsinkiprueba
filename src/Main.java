@@ -4,15 +4,14 @@ import Robots.Robot;
 import Robots.StarPlatinum;
 import Robots.Titan;
 import Utils.Utils;
-import jdk.jshell.execution.Util;
 
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         Ai ai = new Ai();
         StarPlatinum starPlatinum = new StarPlatinum();
         Titan titan = new Titan();
+
         Robot[] robotsDisponibles = {titan, starPlatinum};
         boolean continueBattle = true;
         System.out.println("ingrese su nombre: ");
@@ -25,17 +24,14 @@ public class Main {
         int randRobot = Utils.r.nextInt(2);
 
         user.roboto[0] = robotsDisponibles[randRobot]; //no lo he hecho con chatgpt tio
-        if (randRobot==0) {
-            ai.robot[0] = robotsDisponibles[1];
-        } else {
-            ai.robot[0] = robotsDisponibles[0];
-        }
+        ai.robot[0] = robotsDisponibles[1 - randRobot]; //bueno un poquito pero no cuenta
+
 
         System.out.println("Tu robot: " + user.roboto[0].name);
         System.out.println("robot del rival: " + ai.robot[0].name);
 
         while ((starPlatinum.isAlive()|| titan.isAlive())&&continueBattle){
-            //mostrarMenuOpciones();
+            mostrarMenuOpciones(user, continueBattle);
             AttackSelector(user);
 
 
@@ -48,17 +44,28 @@ public class Main {
     }
 
 
-    /*public static void mostrarMenuOpciones() {
-        System.out.println("1.- Ver estadisticas\n"
-                            +"2.- Atacar\n"
-                            +"3.- Salir");
-        Utils.sc.nextInt();
-    }*/
+    public static boolean mostrarMenuOpciones(User user, boolean continueBattle) {
+        System.out.println("1.- Atacar\n"
+                            +"2.- Salir");
+        int opc = Utils.sc.nextInt();
+        switch (opc) {
+
+            case 1:
+                AttackSelector(user);
+                break;
+            case 2:
+                continueBattle = false;
+                break;
+            default:
+                System.out.println("Opción no válida");
+        }
+        return continueBattle;
+    }
 
     public static void AttackSelector(User user) {
         System.out.println("Qué movimiento debe usar " + user.roboto[0].name + "?");
         for (int i = 0; i < 4; i++) {
-            System.out.println("ataque " + (i + 1) + ": " + user.roboto[0].ataques[i].nombre);
+            System.out.println("ataque " + (i + 1) + ": " + user.roboto[0].ataque[i].nombre);
         }
         Utils.sc.nextInt();
         /*
