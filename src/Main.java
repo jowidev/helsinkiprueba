@@ -1,3 +1,6 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import Characters.Ai;
 import Characters.User;
 import Robots.Robot;
@@ -8,7 +11,14 @@ import Utils.Utils;
 
 
 public class Main {
+	
+	static Scanner sc = new Scanner(System.in);
+	static User user;
+	
     public static void main(String[] args) {
+    	
+    	
+    	
         Ai ai = new Ai();
         StarPlatinum starPlatinum = new StarPlatinum();
         Titan titan = new Titan();
@@ -18,7 +28,7 @@ public class Main {
         boolean puedeAtacar = true;
         System.out.println("ingrese su nombre: ");
         String name = Utils.sc.nextLine();
-        User user = new User(name);
+        user = new User(name);
 
         System.out.println("Bienvenido, "+user.name);
         System.out.println("elija su robot:");
@@ -42,11 +52,9 @@ public class Main {
         	
         	puedeAtacar = true;
         	
-        	
-        	
 			 if(turno==0) { //el chabon que ataca
 				 
-				 puedeAtacar = procesarEfecto(user);
+				 puedeAtacar = procesarEfectoUser(user);
 				 
 				 if(puedeAtacar) {
 					 
@@ -63,14 +71,19 @@ public class Main {
 
              else { //el bot que ataca
             	 
+            	 puedeAtacar = procesarEfectoAi(ai);
+				 
+				 if(puedeAtacar) {
+					 
+					 boolean error = false;
+	                 do {
+
+	                     int aopc = 0;
+	                     AiAtkSelector(user, ai, aopc, error, turno);
+
+	                 } while(error);
+				}
                  
-                 boolean error = false;
-                 do {
-
-                     int aopc = 0;
-                     AiAtkSelector(user, ai, aopc, error, turno);
-
-                 } while(error);
                  
                  
              } //el bot que ataca
@@ -106,7 +119,22 @@ public class Main {
 
 	} //public static main string args
 
-    private static boolean procesarEfecto(User user) {
+    private static boolean procesarEfectoAi(Ai ai) {
+    	boolean puedeAtacar = true;
+    	if(ai.robot[0].efectoSecundario) {
+			switch(ai.robot[0].estado) {
+			case INABILITADO:
+				System.out.println("No puede atacar por " + ai.robot[0].turnos + " turnos");
+				ai.robot[0].restarTurnos();
+				puedeAtacar = false;
+				break;
+			}
+		}
+		return puedeAtacar;
+		
+	}
+
+	private static boolean procesarEfectoUser(User user) {
     	
     	boolean puedeAtacar = true;
     	if(user.roboto[0].efectoSecundario) {
@@ -158,7 +186,7 @@ public class Main {
 
             }
         }
-		opc= Utils.ingresarEntero(1,4,Utils.sc);
+		opc=Trucazo(1,4);
 		if (user.roboto[0].ep < user.roboto[0].ataque[opc-1].energy) {
 			System.out.println("¡No queda energía restante!"); //si ataca y no tiene energia
 			error = true;
@@ -179,5 +207,35 @@ public class Main {
 		return error;
 	}
 
+	
+public static int Trucazo(int min, int max) {
+		
+		int opc=0;
+		boolean error = false;
+		
+		do {
+			error = false;
+			try {
+				opc = sc.nextInt();
+				
+				if((opc<min)||(opc>max)) {
+					System.out.println("Ingrese un numero del " + min + " al " + max);
+					error = true;
+				}
+
+				sc.nextLine();
+
+			} catch (InputMismatchException e) {
+				if (sc.nextLine().equals("moarenergy")) {
+					System.out.println("se ha añadido mas energia");
+				user.roboto[0].ep+=500;
+				}
+				System.out.println("Ingrese el tipo de dato correcto");
+				error = true;
+			}
+		}while(error);
+		
+		return opc;			
+}
 
 } //main

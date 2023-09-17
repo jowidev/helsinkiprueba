@@ -14,6 +14,6 @@ public class Titan extends Robot {
         ataque[0] = new Metralleta();
         ataque[1] = new Acid();
         ataque[2] = new Fuego();
-        ataque[3] = new Escudo();
+        ataque[3] = new ElectroShock();
     }
 }

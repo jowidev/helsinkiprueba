@@ -26,10 +26,7 @@ public abstract class Utils {
 			error = false;
 			try {
 				opc = Scanner.nextInt();
-				if (Integer.toString(opc).equals("moarenergy")) {
-					System.out.println("chitero");
-//					user.roboto[0].ep+=500;
-				}
+				
 				if((opc<min)||(opc>max)) {
 					System.out.println("Ingrese un numero del " + min + " al " + max);
 					error = true;
@@ -38,6 +35,10 @@ public abstract class Utils {
 				Scanner.nextLine();
 
 			} catch (InputMismatchException e) {
+				if (sc.nextLine().equals("moarenergy")) {
+					
+//					user.roboto[0].ep+=500;
+				}
 				System.out.println("Ingrese el tipo de dato correcto");
 				error = true;
 				Scanner.nextLine();

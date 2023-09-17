@@ -67,7 +67,7 @@ public abstract class Ataque {
 		
 				switch(user.roboto[0].ataque[opc-1].nombre) {
 				case "Interferencia Electromagnetica":
-					System.out.println(" y ahora " +ai.robot[0].name + " no podra atacar por " + ai.robot[0].turnos + " turnos");
+					System.out.println(" y ahora " + ai.robot[0].name + " no podra atacar por " + ai.robot[0].turnos + " turnos");
 					break;
 				
 				}
@@ -103,23 +103,23 @@ public abstract class Ataque {
 		
 		switch(tipo) {
 			case FUEGO:
-				if(ai.robot[0].name == "Star Platinum" || user.robot[0].name == "Star Platinum" ) {
+				if(ai.robot[0].name.equals("Star Platinum") || user.roboto[0].name.equals("Star Platinum") ) {
 					mult = 2;
-				} else if(ai.robot[0].name == "EVA-01" || user.robot[0].name == "EVA-01") {
+				} else if(ai.robot[0].name.equals("EVA-01") || user.roboto[0].name.equals("EVA-01")) {
 					mult = 0.5f;
 				}
 			break;
 			case IMPACTO:
-				if(ai.robot[0].name == "Star Platinum" || user.robot[0].name == "Star Platinum") {
+				if(ai.robot[0].name.equals("Star Platinum") || user.roboto[0].name.equals("Star Platinum")) {
 					mult = 2;
-				} else if(ai.robot[0].name == "EVA-01" || user.robot[0].name == "EVA-01") {
+				} else if(ai.robot[0].name.equals("EVA-01") || user.roboto[0].name.equals("EVA-01")) {
 					mult = 0.5f;
 				}
 			break;
 			case CORROSION:
-				if(ai.robot[0].name == "EVA-01" || user.robot[0].name == "EVA-01") {
+				if(ai.robot[0].name.equals("EVA-01")  || user.roboto[0].name.equals("EVA-01")) {
 					mult = 2;
-				} else if(ai.robot[0].name == "Star Platinum" || user.robot[0].name == "Star Platinum") {
+				} else if(ai.robot[0].name.equals("Star Platinum") || user.roboto[0].name.equals("Star Platinum")) {
 					mult = 0.5f;
 				}
 			break;
