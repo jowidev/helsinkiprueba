@@ -14,17 +14,17 @@ public class Escudo extends Ataque {
 	}
 
 
-    public int shieldTurns(StarPlatinum starPlatinum, Ai ai, User user, int opc, int turno) {
-        Random random = new Random();
-        int shieldTurns = random.nextInt( 3)+1;
-        if (turno==0&&starPlatinum.isShielded) {
-            ai.robot[0].ataque[opc].dmg/=2;
-            shieldTurns--;
-        } else
-            user.roboto[0].ataque[opc].dmg/=2;
-        	shieldTurns--;
-        	
-        return shieldTurns;
-
-    }
+//    public int shieldTurns(StarPlatinum starPlatinum, Ai ai, User user, int opc, int turno) {
+//        Random random = new Random();
+//        int shieldTurns = random.nextInt( 3)+1;
+//        if (turno==0&&starPlatinum.isShielded) {
+//            ai.robot[0].ataque[opc].dmg/=2;
+//            shieldTurns--;
+//        } else
+//            user.roboto[0].ataque[opc].dmg/=2;
+//        	shieldTurns--;
+//        	
+//        return shieldTurns;
+//
+//    }
 }

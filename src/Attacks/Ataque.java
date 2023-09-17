@@ -4,17 +4,22 @@ import java.util.Random;
 
 import Characters.Ai;
 import Characters.User;
+import Robots.Estado;
+import Utils.Utils;
+
 
 
 
 public abstract class Ataque {
     public String nombre;
     public int energy; 
+	public int turnosMin = 0; 
+	public int turnosMax =0;
     public int dmg;
     public int acc; 
     public Tipos Tipo;
-    
-    
+    public  boolean efectoSecundario;
+
     public Ataque(String nombre, int energy, int dmg, int acc, Tipos tipo) {
 		this.nombre = nombre;
 		this.energy = energy;
@@ -23,6 +28,17 @@ public abstract class Ataque {
 		this.Tipo = tipo;
 	}
 
+    public Ataque(String nombre, int energy, int dmg, int acc, Tipos tipo, boolean efectoSecundario,  int turnosMin, int turnosMax) {
+		this.nombre = nombre;
+		this.energy = energy;
+		this.dmg = dmg;
+		this.acc = acc;
+		this.Tipo = tipo;
+		this.efectoSecundario = efectoSecundario;
+		this.turnosMin = turnosMin;
+		this.turnosMax = turnosMax;
+	}
+    
 	public boolean calcularAcierto(int acc) {
         Random random = new Random();
         return(random.nextInt(101) <= acc)?true:false;
@@ -40,15 +56,22 @@ public abstract class Ataque {
     	
     
         if (turno==0) {
-				float mult = calcularEfectividad(this.Tipo, ai, user);
-				if(mult==2) {
-					System.out.println("El ataque es super efectivo");
-				} else if(mult==0.5f) {
-					System.out.println("El ataque es poco efectivo");
+        	
+        	if(user.roboto[0].ataque[opc-1].efectoSecundario) {
+				
+				if(user.roboto[0].ataque[opc-1].turnosMax>0) {
+					ai.robot[0].efectoSecundario = true;
+					ai.robot[0].estado = Estado.INABILITADO;
+					ai.robot[0].turnos = Utils.r.nextInt(user.roboto[0].ataque[opc-1].turnosMin, user.roboto[0].ataque[opc-1].turnosMax);
+				}
+		
+				switch(user.roboto[0].ataque[opc-1].nombre) {
+				case "Interferencia Electromagnetica":
+					System.out.println(" y ahora " +ai.robot[0].name + " no podra atacar por " + ai.robot[0].turnos + " turnos");
+					break;
+				
 				}
 				
-            ai.robot[0].hp -= user.roboto[0].ataque[opc - 1].dmg*mult;
-            
         } else {
         	
         	float mult = calcularEfectividad(this.Tipo, ai, user);
@@ -61,8 +84,19 @@ public abstract class Ataque {
             user.roboto[0].hp -= ai.robot[0].ataque[opc-1].dmg*mult;
         }
         
+    } else {
+		float mult = calcularEfectividad(this.Tipo, ai, user);
+		if(mult==2) {
+			System.out.println("El ataque es super efectivo");
+		} else if(mult==0.5f) {
+			System.out.println("El ataque es poco efectivo");
+		}
+		
+    ai.robot[0].hp -= user.roboto[0].ataque[opc - 1].dmg*mult;
+		}
     }
-
+    
+    
 	private float calcularEfectividad(Tipos tipo, Ai ai, User user) {
 		
 	float mult = 1;
@@ -92,4 +126,8 @@ public abstract class Ataque {
 		}
 		return mult;
     }
+	
+	
+	
+	
 }

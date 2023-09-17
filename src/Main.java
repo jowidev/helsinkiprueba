@@ -15,6 +15,7 @@ public class Main {
         int turno = Utils.r.nextInt(2);
         Robot[] robotsDisponibles = {titan, starPlatinum};
         boolean continueBattle = true;
+        boolean puedeAtacar = true;
         System.out.println("ingrese su nombre: ");
         String name = Utils.sc.nextLine();
         User user = new User(name);
@@ -38,17 +39,31 @@ public class Main {
 		System.out.println("Empieza " + ((turno==0)?user.name:ai.name));
 
         do {
-			 if(turno==0) {
-					boolean error = false;
+        	
+        	puedeAtacar = true;
+        	
+        	
+        	
+			 if(turno==0) { //el chabon que ataca
+				 
+				 puedeAtacar = procesarEfecto(user);
+				 
+				 if(puedeAtacar) {
+					 
+					 boolean error = false;
 					do {
 						int opc = 0;
 						UserAtkSelector(user, ai, opc, error, turno);
 
 					} while(error);
+				}
+					
+					
              }  //el chabon que ataca
 
-             else {
-                 //el bot que ataca
+             else { //el bot que ataca
+            	 
+                 
                  boolean error = false;
                  do {
 
@@ -56,8 +71,14 @@ public class Main {
                      AiAtkSelector(user, ai, aopc, error, turno);
 
                  } while(error);
-             }
+                 
+                 
+             } //el bot que ataca
 
+			 
+			 
+			 
+			 
 			if (!titan.isAlive()||!starPlatinum.isAlive()) {
 				System.out.println("ha finalizado la pelea");
                 if (!user.roboto[0].isAlive()) {
@@ -85,7 +106,24 @@ public class Main {
 
 	} //public static main string args
 
-    public static boolean AiAtkSelector(User user, Ai ai, int aopc, boolean error, int turno) {
+    private static boolean procesarEfecto(User user) {
+    	
+    	boolean puedeAtacar = true;
+    	if(user.roboto[0].efectoSecundario) {
+			switch(user.roboto[0].estado) {
+			case INABILITADO:
+				System.out.println("No puede atacar por " + user.roboto[0].turnos + " turnos");
+				user.roboto[0].restarTurnos();
+				puedeAtacar = false;
+				break;
+			}
+		}
+		return puedeAtacar;
+    	
+ 
+	}
+
+	public static boolean AiAtkSelector(User user, Ai ai, int aopc, boolean error, int turno) {
         System.out.println("Turno de " + ai.name);
         System.out.println(ai.name + " está pensando el ataque...");
         Utils.esperar(500);

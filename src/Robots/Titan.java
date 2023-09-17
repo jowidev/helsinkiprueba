@@ -3,6 +3,9 @@ package Robots;
 import Attacks.*;
 
 public class Titan extends Robot {
+	
+	public boolean efectosecundario = false;
+	
     public Titan() {
         name = "EVA-01";
         hp = 1000;
