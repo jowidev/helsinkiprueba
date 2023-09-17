@@ -10,7 +10,6 @@ public abstract class Robot {
         public int ep; //energia
         public Ataque[] ataque = new Ataque[4];
         public boolean isAlive = true;
-        public boolean isStunned = false;
 
         public boolean isAlive() {
                 if (hp<=0) {

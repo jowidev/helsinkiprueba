@@ -5,7 +5,6 @@ import Robots.StarPlatinum;
 import Robots.Titan;
 import Utils.Utils;
 
-import javax.print.attribute.ResolutionSyntax;
 
 
 public class Main {
@@ -25,9 +24,10 @@ public class Main {
         for (int i=0; i<2; i++) {
             System.out.println(robotsDisponibles[i].name);
         }
-        int sel = Utils.sc.nextInt();
+        int sel = Utils.ingresarEntero(1,2,Utils.sc);
 
-        user.roboto	[0] = robotsDisponibles[(sel-1)]; //no lo he hecho con chatgpt tio
+
+        user.roboto	[0] = robotsDisponibles[(sel-1)];
         ai.robot[0] = robotsDisponibles[1-(sel-1)];
 
         System.out.println("Tu robot: " + user.roboto[0].name);
@@ -39,7 +39,7 @@ public class Main {
 
 
         do {
-			 if(turno==0) {
+			 if(turno==0&&(user.roboto[0]==starPlatinum)&& !starPlatinum.isStunned) {
 					boolean error = false;
 					do {
 						int opc = 0;
@@ -48,15 +48,17 @@ public class Main {
 					} while(error);
              }  //el chabon que ataca
 
-			 else { //el bot que ataca
-					boolean error = false;
-					do {
-						error = false;
-                        int aopc = 0;
-                        AiAtkSelector(user, ai, aopc, error, turno);
+             else if ((ai.robot[0]==starPlatinum) && !starPlatinum.isStunned) {
+                 //el bot que ataca
+                 boolean error = false;
+                 do {
 
-					} while(error);
-			 }
+                     int aopc = 0;
+                     AiAtkSelector(user, ai, aopc, error, turno);
+
+                 } while(error);
+             }
+
 			if (!titan.isAlive()||!starPlatinum.isAlive()) {
 				System.out.println("ha finalizado la pelea");
                 if (!user.roboto[0].isAlive()) {
@@ -67,9 +69,19 @@ public class Main {
 				continueBattle = false;
 			}
 
+            if (titan.ep<50 && starPlatinum.ep<50) {
+                System.out.println("Ninguno tiene energía restante");
+                if (user.roboto[0].hp>ai.robot[0].hp) {
+                    System.out.println("¡Has ganado!");
+                } else {
+                    System.out.println("Has perdido!");
+                }
+                continueBattle = false;
+            }
+
 			turno = (turno==0)?1:0;
 		        
-		}while(starPlatinum.isAlive()|| titan.isAlive()&&continueBattle);
+		}while((starPlatinum.isAlive()|| titan.isAlive())&&continueBattle);
 
 
 	} //public static main string args
@@ -102,8 +114,13 @@ public class Main {
 		System.out.println("Rival:\tEP: "+ai.robot[0].ep+"\tHP: "+ ai.robot[0].hp);
 		System.out.println("Qué movimiento debe usar " + user.roboto[0].name + "?");
 		for (int i = 0; i < user.roboto[0].ataque.length; i++) {
+            if (user.roboto[0].ep>user.roboto[0].ataque[i].energy) {
 			System.out.println("ataque " + (i + 1) + ": " + user.roboto[0].ataque[i].nombre); //mostrar ataques del chabon
-		}
+		    } else {
+                System.out.println("ataque " + (i + 1) + ": " + user.roboto[0].ataque[i].nombre+" (No queda energía)"); //mostrar ataques del chabon
+
+            }
+        }
 		opc= Utils.ingresarEntero(1,4,Utils.sc);
 		if (user.roboto[0].ep < user.roboto[0].ataque[opc-1].energy) {
 			System.out.println("¡No queda energía restante!"); //si ataca y no tiene energia

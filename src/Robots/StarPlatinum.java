@@ -3,6 +3,7 @@ package Robots;
 import Attacks.*;
 
 public class StarPlatinum extends Robot {
+    public boolean isStunned = false;
 
     public boolean isShielded = false;
     public StarPlatinum() {
