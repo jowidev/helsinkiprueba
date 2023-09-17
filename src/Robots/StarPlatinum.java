@@ -6,7 +6,7 @@ public class StarPlatinum extends Robot {
     public StarPlatinum() {
         name = "Star Platinum";
         hp = 1200;
-        ep = 1000;
+        ep = 1000; //energy points
         ataque = new Ataque[4];
         ataque[0] = new Metralleta();
         ataque[1] = new Acid();

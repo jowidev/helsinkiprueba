@@ -23,7 +23,11 @@ public abstract class Ataque {
         }
     }
 
-    public void ejecutarAtaque(Ai ai, User user,int turno) {
-    	
+
+
+    public void ejecutarAtaque(Ai ai, User user,int opc, int turno) {
+        if (turno==0) {
+            ai.robot[0].hp -= user.roboto[0].ataque[opc - 1].dmg;
+        }
     }
 }

@@ -1,5 +1,7 @@
 package Utils;
 
+import Characters.User;
+
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -24,13 +26,19 @@ public abstract class Utils {
 			error = false;
 			try {
 				opc = Scanner.nextInt();
+				if (Integer.toString(opc).equals("moarenergy")) {
+					System.out.println("chitero");
+					//falta meter es user.roboto[0].ep+=500;
+				}
 				if((opc<min)||(opc>max)) {
-					System.out.println("Error. Debe ingresar un numero del " + min + " al " + max);
+					System.out.println("Ingrese un numero del " + min + " al " + max);
 					error = true;
 				}
+
 				Scanner.nextLine();
+
 			} catch (InputMismatchException e) {
-				System.out.println("Error. Tipo de dato mal ingresado");
+				System.out.println("Ingrese el tipo de dato correcto");
 				error = true;
 				Scanner.nextLine();
 			}
