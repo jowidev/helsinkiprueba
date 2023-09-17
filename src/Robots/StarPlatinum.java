@@ -3,6 +3,8 @@ package Robots;
 import Attacks.*;
 
 public class StarPlatinum extends Robot {
+
+    public boolean isShielded = false;
     public StarPlatinum() {
         name = "Star Platinum";
         hp = 1200;
@@ -13,4 +15,5 @@ public class StarPlatinum extends Robot {
         ataque[2] = new Fuego();
         ataque[3] = new Shield();
     }
+
 }

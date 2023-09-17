@@ -1,5 +1,9 @@
 package Attacks;
 
+import Characters.Ai;
+import Characters.User;
+import Robots.Titan;
+
 import java.util.Random;
 
 public class ElectroShock extends Ataque {
@@ -11,11 +15,14 @@ public class ElectroShock extends Ataque {
 
     }
 
-    public int ElectroShockTurns() {
+    public int ElectroShockTurns(Titan titan, Ai ai, User user, int opc, int turno) {
         Random random = new Random();
-        int ShockTurns = random.nextInt( 3);
-        //dmg = dmg /2; &
-        ShockTurns--;
-        return ShockTurns;
+        int shockTurns = random.nextInt( 4)+1;
+        if (turno==1&&titan.) {
+            ai.robot[0].ataque[opc].dmg/=2;
+            shockTurns--;
+        } else
+            user.roboto[0].ataque[opc].dmg/=2;
+        return shockTurns;
     }
 }

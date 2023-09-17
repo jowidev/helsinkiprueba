@@ -6,6 +6,7 @@ import Attacks.Ataque;
 public abstract class Robot {
         public int hp; //vida
         public String name;
+        public String tipo;
         public int ep; //energia
         public Ataque[] ataque = new Ataque[4];
         public boolean isAlive = true;
