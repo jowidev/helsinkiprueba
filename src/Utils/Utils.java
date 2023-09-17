@@ -28,7 +28,7 @@ public abstract class Utils {
 				opc = Scanner.nextInt();
 				if (Integer.toString(opc).equals("moarenergy")) {
 					System.out.println("chitero");
-					//falta meter es user.roboto[0].ep+=500;
+//					user.roboto[0].ep+=500;
 				}
 				if((opc<min)||(opc>max)) {
 					System.out.println("Ingrese un numero del " + min + " al " + max);

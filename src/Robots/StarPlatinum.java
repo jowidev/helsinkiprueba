@@ -14,7 +14,8 @@ public class StarPlatinum extends Robot {
         ataque[0] = new Metralleta();
         ataque[1] = new Acid();
         ataque[2] = new Fuego();
-        ataque[3] = new Shield();
+        ataque[3] = new Escudo();
+       
     }
 
 }

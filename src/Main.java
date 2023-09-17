@@ -37,9 +37,8 @@ public class Main {
 		Utils.esperar(1000);
 		System.out.println("Empieza " + ((turno==0)?user.name:ai.name));
 
-
         do {
-			 if(turno==0&&(user.roboto[0]==starPlatinum)&& !starPlatinum.isStunned) {
+			 if(turno==0) {
 					boolean error = false;
 					do {
 						int opc = 0;
@@ -48,7 +47,7 @@ public class Main {
 					} while(error);
              }  //el chabon que ataca
 
-             else if ((ai.robot[0]==starPlatinum) && !starPlatinum.isStunned) {
+             else {
                  //el bot que ataca
                  boolean error = false;
                  do {
@@ -73,7 +72,7 @@ public class Main {
                 System.out.println("Ninguno tiene energía restante");
                 if (user.roboto[0].hp>ai.robot[0].hp) {
                     System.out.println("¡Has ganado!");
-                } else {
+                } else if (ai.robot[0].hp>user.roboto[0].hp){
                     System.out.println("Has perdido!");
                 }
                 continueBattle = false;
@@ -110,7 +109,7 @@ public class Main {
 	public static boolean UserAtkSelector(User user, Ai ai, int opc, boolean error, int turno) {
         System.out.println("Turno del jugador");
 
-        System.out.println("Tú:   \tEP: "+user.roboto[0].ep+"\tHP: "+ user.roboto[0].hp);
+        System.out.println("Tu:   \tEP: "+user.roboto[0].ep+"\tHP: "+ user.roboto[0].hp);
 		System.out.println("Rival:\tEP: "+ai.robot[0].ep+"\tHP: "+ ai.robot[0].hp);
 		System.out.println("Qué movimiento debe usar " + user.roboto[0].name + "?");
 		for (int i = 0; i < user.roboto[0].ataque.length; i++) {
